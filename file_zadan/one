@@ -27,8 +27,8 @@ array_filter($array, function($key) {
 №4
 
 array_walk($exArray, function(&$valk) {
-    $oValf = $valk['id'];
-    $oVal = $valk['name'];
+    $Valf = $valk['id'];
+    $Val = $valk['name'];
     unset($valk['id']);
     unset($valk['name']);
     $valk[$oVal] = $oVal;
