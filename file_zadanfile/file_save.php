@@ -18,24 +18,8 @@ class Concept {
         });
 
         $promise->wait();
-        $somecontent = "Добавить это к файлу\n";
+        filed = "save.txt";
+        file_put_contents($filed, $this);
 
-      if (is_writable( $this)) {
-    if (!$fp = fopen($this, 'a')) {
-         echo "Не могу открыть файл ($this)";
-         exit;
-    }
-
-    if (fwrite($fp, $somecontent) === FALSE) {
-        echo "Не могу произвести запись в файл ($this)";
-        exit;
-    }
-
-    echo "Ура! Записали ($somecontent) в файл ($this)";
-
-    fclose($fp);
-
-    } else {
-       echo "Файл $filename недоступен для записи";
-}
+   
     }
