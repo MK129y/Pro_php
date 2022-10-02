@@ -1,0 +1,56 @@
+<?php
+$array = [
+    ["id" => 1, "date" => "12.01.2020", "name" => "test1"],
+    ["id" => 2, "date" => "02.05.2020", "name" => "test2"],
+    ["id" => 4, "date" => "08.03.2020", "name" => "test4"],
+    ["id" => 1, "date" => "22.01.2020", "name" => "test1"],
+    ["id" => 2, "date" => "11.11.2020", "name" => "test4"],
+    ["id" => 3, "date" => "06.06.2020", "name" => "test3"]
+];
+
+№ 1
+
+$exArray = [];
+
+$exArray = $array;
+
+$iddd = array_column($exArray, 'id');
+$iddd = array_unique($ids);
+$exArray = array_filter($exArray, function ($key, $value) use ($iddd) {
+    return in_array($value, array_keys($ids));
+}, ARRAY_FILTER_USE_BOTH); //pass both value and key as arguments to callback instead of the value
+
+ №2 
+
+usort($exArray, function ($item1, $item2) {
+    return $item1['id'] <=> $item2['id'];
+});
+
+№3
+
+array_filter($array, function($key) {
+    return $key['id'] == 2;
+}, ARRAY_FILTER_USE_BOTH);
+
+№4
+
+array_walk($exArray, function(&$valk) {
+    $oValf = $valk['id'];
+    $oVal = $valk['name'];
+    unset($valk['id']);
+    unset($valk['name']);
+    $valk[$oVal] = $oVal;
+});
+
+/* SQL */
+
+№5// SELECT good_id, (SELECT good_name FROM goods WHERE id = good_id)
+FROM goods_tags gt 
+WHERE (SELECT COUNT(id) FROM tags) = (SELECT COUNT(tag_id) FROM goods_tags WHERE good_id = gt.good_id) 
+GROUP BY good_id
+
+№6//SELECT department_id 
+from evaluations
+WHERE gender = true and value >5
+
+?>
